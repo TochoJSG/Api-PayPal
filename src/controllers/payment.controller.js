@@ -1,4 +1,3 @@
-import { response } from 'express';
 import { ApiPaypalClient,ApiPaypalSecret,HOST,PaypalApi } from '../config.js';
 import axios from 'axios';
 
@@ -49,18 +48,18 @@ export const captureOrder = async (request,response)=>{
     //response.send('Order received') 
     const { token } = request.query
 
-    const response = await axios.post(`${PaypalApi}/v2/checkout/orders/${token}/capture`,{},{
+    const res = await axios.post(`${ PaypalApi }/v2/checkout/orders/${token}/capture`,{},{
         auth: {
             username: ApiPaypalClient,
             password: ApiPaypalSecret
         }
     })
 
-    console.log(response.data);
+    console.log(res.data);
 
     return response.send('payed');
 };
 
 export const cancelOrder = (request,response)=>{ 
-    response.send('order canceled') 
+    response.redirect('/') 
 };

@@ -3,10 +3,10 @@ import { createOrder,captureOrder,cancelOrder} from '../controllers/payment.cont
 
 const router = Router();
 
-router.get('/create-order', createOrder() );
+router.get('/create-order', createOrder );
 
-router.get('/capture-order', captureOrder() );
+router.get('/capture-order', captureOrder );
 
-router.get('/cancel-order', cancelOrder() );
+router.get('/cancel-order', cancelOrder );
 
 export default router;
