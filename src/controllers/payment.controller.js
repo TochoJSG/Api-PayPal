@@ -10,7 +10,7 @@ export const createOrder = async (request,res)=>{
             {
                 amount:{
                     currency_code:"MXN",
-                    value:"100.0",
+                    value:"100.0"
                 }
             },
         ],
@@ -46,7 +46,7 @@ export const createOrder = async (request,res)=>{
 
 export const captureOrder = async (request,response)=>{
     //response.send('Order received') 
-    const { token } = request.query
+    const { token } = request.query;
 
     const res = await axios.post(`${ PaypalApi }/v2/checkout/orders/${token}/capture`,{},{
         auth: {
@@ -61,5 +61,6 @@ export const captureOrder = async (request,response)=>{
 };
 
 export const cancelOrder = (request,response)=>{ 
-    response.redirect('/') 
+    if(request.error){console.table(request.error)}
+    return response.redirect('/');
 };
